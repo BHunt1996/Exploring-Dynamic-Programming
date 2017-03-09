@@ -1,40 +1,32 @@
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.Scanner;
-
 
 public class CoinChange {
-	public int minCoinDynamic(int amount, int[] coins) {
-		int[] coinReq = new int[amount+1]; // this will store the optimal solution
-										  // for all the values -- from 0 to given amount.
-											
-		int[] CC = new int[coins.length]; // resets for every smaller problems
-											// and minimum in it is the optimal
-											// solution for the smaller problem.
-		coinReq[0] = 0; // 0 coins are required to make the change for 0
-		// now solve for all the amounts
+	public int minCoins(int amount, int[] coins) {
+		//stores an optimal solution for all the values from 0 to given amount
+		int[] coinReq = new int[amount+1];
+		//stores solutions for a single sub-problem, resetting once the optimal
+		//solution for that problem is found, moving onto the next sub-problem							
+		int[] CC = new int[coins.length];
+		//0 coins are required to make change for 0
+		coinReq[0] = 0;
+		//now solve for the values that make up the total amount
 		for (int amt = 1; amt <= amount; amt++) {
 			for (int j = 0; j < CC.length; j++) {
 				CC[j] = -1;
 			}
-			// Now try taking every coin one at a time and fill the solution in
-			// the CC[]
+			//each coin is taken one at a time and used to fill the solution
+			//in CC[]
 			for (int j = 0; j < coins.length; j++) {
-				if (coins[j] <= amt) { // check if coin value is less than
-										// amount
-					CC[j] = coinReq[amt - coins[j]] + 1; // if available,
-																// select the
-																// coin and add
-																// 1 to solution
-																// of
-																// (amount-coin
-																// value)
+				//check if the coin value is less than the amount
+				if (coins[j] <= amt) { 
+					//if available, select the coin & add 1 to the solution
+					//of (amount-coin value)
+					CC[j] = coinReq[amt - coins[j]] + 1;
 				}
 			}
-			//Now solutions for amt using all the coins is stored in CC[]
-			//take out the minimum (optimal) and store in coinReq[amt]
+			//From the solutions stored in CC[], take out the optimal
+			//and store in coinReq[amt]
 			coinReq[amt]=-1;
 			for(int j=1;j<CC.length;j++){
 				if(CC[j]>0 && (coinReq[amt]==-1 || coinReq[amt]>CC[j])){
@@ -65,7 +57,7 @@ public class CoinChange {
 
 		CoinChange m = new CoinChange();
 		System.out.println("Minimum Coins required to make change for "
-				 + "an amount of " + amount  + " are: " + m.minCoinDynamic(amount, coins));
+				 + "an amount of " + amount  + " are: " + m.minCoins(amount, coins));
 	}
 
 }
