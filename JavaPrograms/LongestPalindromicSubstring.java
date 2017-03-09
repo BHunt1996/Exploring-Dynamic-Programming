@@ -1,14 +1,10 @@
-/**
- ** Java Implementation of the Longest Palindromic Substring Algorithm
- **/
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-/** Class:  LongestPalindromicSubstring **/
 public class LongestPalindromicSubstring {
-    /** Method: lps **/
+    //given a string s, return the maximum-length contiguous substring
+    //of s that is also a palindrome
     public String lps(String s) {
         if(s==null || s.length()<=1){
             return s;

@@ -1,14 +1,9 @@
-/**
- ** Java Implementation of the Longest Common Subsequence Algorithm
- **/
- 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
- 
-/** Class:  LongestCommonSubsequence **/
-public class  LongestCommonSubsequence {    
-    /** Method: lcs **/
+
+public class  LongestCommonSubsequence {
+    //given two strings, str1 & str2, return the longest subsequence
+    //common to both str1 & str2
     public String lcs(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
@@ -39,8 +34,7 @@ public class  LongestCommonSubsequence {
         }
         return sb.toString();
     }
- 
-    /** Main Method **/
+
     public static void main(String[] args) throws IOException {    
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Longest Common Subsequence Problem\n");

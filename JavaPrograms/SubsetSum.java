@@ -1,12 +1,10 @@
-/**
- ** Java Implementation of the Subset Sum Algorithm
- **/
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-/** Class:  SubsetSum **/
+
 public class SubsetSum {
-	/** Method: subsetSum **/
+	//given a set of integers, return whether or not there's
+	//a non-empty subset whose sum is 0
 	public static boolean subsetSum(int[] A, int sum) {
 		boolean[][] solution = new boolean[A.length + 1][sum + 1];		
 		// if sum is not zero and subset is 0, we can't make it 

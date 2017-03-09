@@ -1,11 +1,9 @@
-/**
- **    Java Implementation of the Longest Increasing Subsequence Algorithm
- **/
-
 import java.util.Scanner;
 
 public class LongestIncreasingSubsequence {
-    /** Method lis **/
+    //given a sequence of integers, find the longest subsequence
+    //such that all elements of the subsequence are sorted in
+    //increasing order
     public int[] lis(int[] X){        
         int n = X.length - 1;
         int[] M = new int[n + 1];  
@@ -38,8 +36,7 @@ public class LongestIncreasingSubsequence {
         }
         return result;             
     }
- 
-    /** Main Method **/
+
     public static void main(String[] args) {    
         Scanner scan = new Scanner(System.in);
         System.out.println("Longest Increasing Subsequence Algorithm\n");

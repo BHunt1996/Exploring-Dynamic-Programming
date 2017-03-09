@@ -1,42 +1,45 @@
 public class Interleave {
-    
-    public boolean isInterleaved(char str1[], char str2[], char str3[]){
-        boolean T[][] = new boolean[str1.length +1][str2.length +1];
-        
-        if(str1.length + str2.length != str3.length){
+    //given three strings: s1, s2, s3, determine if s3 can be formed
+    //by interleaving s1 & s2
+    public boolean isInterleaved(String s1, String s2, String s3) {
+        if (s3 == null || (s1 == null && s2 == null) || s1.length() + s2.length() != s3.length()) {
             return false;
         }
-        
-        for(int i=0; i < T.length; i++){
-            for(int j=0; j < T[i].length; j++){
-                int l = i + j -1;
-                if(i == 0 && j == 0){
-                    T[i][j] = true;
-                }
-                else if(i == 0){
-                    if(str3[l] == str2[j-1]){
-                        T[i][j] = T[i][j-1];
-                    }
-                }
-                else if(j == 0){
-                    if(str1[i-1] == str3[l]){
-                        T[i][j] = T[i-1][j];
-                    }
-                }
-                else{
-                    T[i][j] = (str1[i-1] == str3[l] ? T[i-1][j] : false) || (str2[j-1] == str3[l] ? T[i][j-1] : false);
+        boolean[][] DP = new boolean[s1.length() + 1][s2.length() + 1];
+        DP[0][0] = true; //empty s1 and s2 would be a working case
+
+        //with just s1:
+        for (int i = 1; i <= s1.length(); i++) {
+            if (s3.charAt(i - 1) == s1.charAt(i - 1) && DP[i - 1][0]) {
+                DP[i][0] = true;
+            }
+        }
+
+        //with just s2:
+        for (int j = 1; j <= s2.length(); j++) {
+            if (s3.charAt(j - 1) == s2.charAt(j - 1) && DP[0][j - 1]) {
+                DP[0][j] = true;
+            }
+        }
+
+        for (int i = 1; i <= s1.length(); i++) {
+            for (int j = 1; j <= s2.length(); j++) {
+                if ((s3.charAt(i + j - 1) == s1.charAt(i - 1) && DP[i - 1][j]) 
+                    || (s3.charAt(i + j - 1) == s2.charAt(j - 1) && DP[i][j - 1])) {
+                    DP[i][j] = true;
                 }
             }
         }
-        return T[str1.length][str2.length];
+
+        return DP[s1.length()][s2.length()];
     }
     
     public static void main(String args[]){
-        String str1 = "XXYM";
-        String str2 = "XXZT";
-        String str3 = "XXXZXYTM";
+        String s1 = "XXYM";
+        String s2 = "XXZT";
+        String s3 = "XXXZXYTM";
         Interleave il = new Interleave();
-        System.out.println(il.isInterleaved(str1.toCharArray(), str2.toCharArray(), str3.toCharArray()));
+        System.out.println(il.isInterleaved(s1, s2, s3()));
     }
     
 }

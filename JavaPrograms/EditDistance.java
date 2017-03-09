@@ -1,21 +1,16 @@
-/**
- ** Java Implementation of the Edit Distance Algorithm
- **/
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
-/** Class:  EditDistance **/
+
 public class EditDistance {
-    /** Method: editDistance **/
     public int editDistance(String s1, String s2) {
         int [][] sol = new int[s1.length()+1][s2.length()+1];
         
-        //elements will be inserted
+        //all elements will be inserted
         for (int i = 0; i <=s2.length(); i++) {
             sol[0][i] =i;
         }
 
-        //elements will be removed
+        //all elements will be removed
         for (int i = 0; i <=s1.length(); i++) {
             sol[i][0] =i;
         }
@@ -36,7 +31,6 @@ public class EditDistance {
         return sol[s1.length()][s2.length()];
     }
 
-    /** Main Method **/
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Edit Distance Problem\n");

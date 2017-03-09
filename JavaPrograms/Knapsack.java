@@ -1,17 +1,10 @@
-/**
- ** Java Implementation of the 0/1 Knapsack Algorithm
- **/
- 
-import java.util.Scanner;
-
 public class Knapsack {
-
-    // returns the maximum of two integers
+    //returns the maximum of two integers
     static int max(int a, int b) { 
-        return (a > b)? a : b; 
+        return (a > b) ? a : b; 
     }
       
-   // Returns the maximum value that can be put in a knapsack of capacity W
+   //returns the maximum value that can be put in a knapsack of capacity W
     static int knapSackValue(int W, int wt[], int val[], int n) {
         int i, w;
         int K[][] = new int[n+1][W+1];
