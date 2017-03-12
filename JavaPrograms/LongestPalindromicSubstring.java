@@ -6,7 +6,8 @@ public class LongestPalindromicSubstring {
     //given a string s, return the maximum-length contiguous substring
     //of s that is also a palindrome
     public String lps(String s) {
-        if(s==null || s.length()<=1){
+        //if there is no string entered, then the program will end
+        if(s == null || s.length() <= 1){
             return s;
         }
      
@@ -15,20 +16,22 @@ public class LongestPalindromicSubstring {
         boolean [][] dp = new boolean[len][len];
      
         String longest = null;
-        for(int l=0; l<s.length(); l++){
-            for(int i=0; i<len-l; i++){
+        //loops through the string in both directions, looking
+        //for matching substrings in each loop through
+        for(int l = 0; l < s.length(); l++){
+            for(int i = 0; i < len-l; i++){
                 int j = i+l;
-                if(s.charAt(i)==s.charAt(j) && (j-i<=2||dp[i+1][j-1])){
+                if(s.charAt(i) == s.charAt(j) && (j-i <= 2|| dp[i+1][j-1])){
                     dp[i][j]=true;
      
-                    if(j-i+1>maxLen){
+                    if(j - i+1>maxLen){
                        maxLen = j-i+1; 
                        longest = s.substring(i, j+1);
                     }
                 }
             }
         }
-     
+        
         return longest;
     }
 
