@@ -35,11 +35,11 @@ public class Interleave {
     }
     
     public static void main(String args[]){
-        String s1 = "XXYM";
-        String s2 = "XXZT";
-        String s3 = "XXXZXYTM";
+        String s1 = "XXY";
+        String s2 = "XXZ";
+        String s3 = "Hello";
         Interleave il = new Interleave();
-        System.out.println(il.isInterleaved(s1, s2, s3()));
+        System.out.println(il.isInterleaved(s1, s2, s3));
     }
     
 }

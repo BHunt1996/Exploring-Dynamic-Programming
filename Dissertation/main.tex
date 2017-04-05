@@ -1,17 +1,19 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
+\usepackage[citestyle=authoryear,bibstyle=numeric]{biblatex}
+\addbibresource{references.bib}
+
 \title{
 	{Exploring Dynamic Programming Problems}
-	{\large Swansea University}\\
+	{\large Swansea University}
 }
 \author{Bradley Hunt}
 \date{May 2017}
 
 \begin{document}
-
 
 \maketitle
 
@@ -20,7 +22,8 @@
 \chapter{Introduction}
 \input{chapters/introduction}
 
-%%Rest of the chpaters
+\chapter{Detailing The Problems}
+\input{chapters/problems}
 
 \chapter{Summary}
 \input{chapters/summary}
