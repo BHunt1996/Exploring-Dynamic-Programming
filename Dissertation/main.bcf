@@ -66,7 +66,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labeldateparts</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="multivalued">
       <bcf:key>labeldatespec</bcf:key>
@@ -135,11 +135,11 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquelist</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquename</bcf:key>
-      <bcf:value>2</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniqueprimaryauthor</bcf:key>
@@ -2143,5 +2143,54 @@
     <bcf:datasource type="file" datatype="bibtex">references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">bellman</bcf:citekey>
+    <bcf:citekey order="2">dynamic</bcf:citekey>
+    <bcf:citekey order="3">dynamic-wiki</bcf:citekey>
+    <bcf:citekey order="4">design-manual</bcf:citekey>
+    <bcf:citekey order="5">IntroAlgo</bcf:citekey>
+    <bcf:citekey order="6">DPiCS</bcf:citekey>
+    <bcf:citekey order="7">learning2act</bcf:citekey>
+    <bcf:citekey order="8">IntroAlgo</bcf:citekey>
+    <bcf:citekey order="9">design-manual</bcf:citekey>
+    <bcf:citekey order="10">interviews</bcf:citekey>
+    <bcf:citekey order="11">Java-Pop</bcf:citekey>
+    <bcf:citekey order="12">knapsack-definition</bcf:citekey>
+    <bcf:citekey order="13">patience-diff</bcf:citekey>
+    <bcf:citekey order="14">bioinformatics</bcf:citekey>
+    <bcf:citekey order="15">diff-utility</bcf:citekey>
+    <bcf:citekey order="16">Levenshtein</bcf:citekey>
+    <bcf:citekey order="17">bio_ED</bcf:citekey>
+    <bcf:citekey order="18">passwords</bcf:citekey>
+    <bcf:citekey order="19">passwords</bcf:citekey>
   </bcf:section>
+  <bcf:sortlist section="0" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
+  <bcf:sorting>
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem order="2">0</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sorting>
+  </bcf:sortlist>
 </bcf:controlfile>

@@ -1,14 +1,48 @@
 \documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
+
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+\usepackage{multirow}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+\usepackage[compact]{titlesec}
+\usepackage{enumitem}
 
-\usepackage[citestyle=authoryear,bibstyle=numeric]{biblatex}
-\addbibresource{references.bib}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0pt}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
 
 \title{
-	{Exploring Dynamic Programming Problems}
-	{\large Swansea University}
+	{Exploring the Applications of Dynamic Programming}
 }
 \author{Bradley Hunt}
 \date{May 2017}
@@ -18,14 +52,25 @@
 \maketitle
 
 \tableofcontents
-
+\newpage
 \chapter{Introduction}
 \input{chapters/introduction}
 
-\chapter{Detailing The Problems}
+\chapter{Background}
+\input{chapters/background}
+
+\chapter{Project Specification}
+\input{chapters/spec}
+
+\chapter{Project Management}
+\input{chapters/management}
+
+\chapter{Dynamic Programming Problems / Implementation}
 \input{chapters/problems}
 
-\chapter{Summary}
-\input{chapters/summary}
+\chapter{Conclusions}
+\input{chapters/conclusions}
+
+\printbibliography
 
 \end{document}

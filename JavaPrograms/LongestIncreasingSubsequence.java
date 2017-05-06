@@ -1,46 +1,68 @@
 import java.util.Scanner;
-
+/**
+* Computes the longest increasing subsequence in a given sequence of integers
+* @author Bradley Hunt
+* @since 07/11/16
+*/
 public class LongestIncreasingSubsequence {
-    //given a sequence of integers, find the longest subsequence
-    //such that all elements of the subsequence are sorted in
-    //increasing order
-    public int[] lis(int[] X){        
-        int n = X.length - 1;
-        int[] M = new int[n + 1];  
-        int[] P = new int[n + 1]; 
-        int L = 0;
- 
-        for (int i = 1; i < n + 1; i++){
-            int j = 0;
- 
-            //linear search applied here
-            for (int pos = L ; pos >= 1; pos--){
-                if (X[M[pos]] < X[i]){
-                    j = pos;
-                    break;
+	/**
+	* This method takes in a sequence of numbers and finds the length and values of
+	* the longest increasing subsequence within the given sequence.
+	* @param seq - an sequence of integers stored in an array
+	* @param output - a string containing the LIS and its length
+	*/
+    public String getSubsequence(int[] seq) {
+        /* Array used to store the longest increasing subsequence starting with each value from seq[] */
+        int[] LIS = new int[seq.length];
+        /* Loop through LIS for each array element and find all possible increasing subsequences */
+        for (int i = 0; i < seq.length; i++) {
+            int max = -1;
+            for (int j = 0; j < i; j++) {
+                /* Checks if the previous element > current element */
+                if (seq[i] > seq[j]) {
+                    /* Update the max from the previous entries */
+                    if (max == -1 || max < LIS[j] + 1) {
+                        max = 1 + LIS[j];
+                    }
                 }
-            }            
-            P[i] = M[j];
-            if (j == L || X[i] < X[M[j + 1]]){
-                M[j + 1] = i;
-                L = Math.max(L,j + 1);
+            }
+            /* Sets the max to 1, if there's not multiple increasing values */
+            if (max == -1) {
+                max = 1;
+            }
+            LIS[i] = max;
+        }
+        /* Find the maximum of all the stored subsequence lengths in LIS[] */
+        int result = -1;
+        int val = -1;
+        for (int i = 0; i < LIS.length; i++) {
+            if (result < LIS[i]) {
+                result = LIS[i];
+                val = i;
             }
         }
- 
-        //backtrack to complete the search
-        int[] result = new int[L];
-        int pos = M[L];
-        for (int i = L - 1; i >= 0; i--){
-            result[i] = X[pos];
-            pos = P[pos];
+        /* Work backwards in order to restore the values that make up the determined LIS */
+        String path =  seq[val] + " ";
+        int res = result-1;
+        for (int i = val-1; i > 0; i--) {
+            if(LIS[i]==res){
+                path =  seq[i] + " " + path;
+                res--;
+            }           
         }
-        return result;             
+        /* Derive the length from the obtained LIS for full accuracy */
+        int len = path.replace(" ", "").length();
+        /* Return length and an actual subsequence of this length
+        (if there are multiple longest sequences, just one is picked) */
+        String output = "Longest Increasing Subsequence: " + path + "\nWhich has a length of: " + len;
+        return output;    
     }
 
-    public static void main(String[] args) {    
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Longest Increasing Subsequence Algorithm\n");
- 
+
+
+    public static void main(String[] args) {
+        /* Read in a sequence of integers */
+        Scanner scan = new Scanner(System.in); 
         System.out.println("Enter number of elements");
         int n = scan.nextInt();
         int[] arr = new int[n + 1];
@@ -49,15 +71,9 @@ public class LongestIncreasingSubsequence {
             arr[i] = scan.nextInt();
         }
  
-        LongestIncreasingSubsequence obj = new LongestIncreasingSubsequence(); 
-        int[] result = obj.lis(arr);       
- 
-        //print result 
-        System.out.print("\nLongest Increasing Subsequence : ");
-        for (int i = 0; i < result.length; i++){
-            System.out.print(result[i] +" ");
-        }
-        System.out.println();
+        LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence(); 
+        System.out.println(lis.getSubsequence(arr));
+        scan.close();
     }
 
 }
